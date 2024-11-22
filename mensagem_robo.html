@@ -185,6 +185,13 @@
                     btn.innerHTML='encaminhar'
                     btn.addEventListener('click',()=>{
                     elemento.appendChild(div3)
+                    setTimeout(() => {
+                elemento.scrollTo({
+                    top: 10000,
+                    behavior: 'smooth' // Para uma rolagem suave
+                })
+            }
+                , 500)
                 })
                 elemento.appendChild(btn)
                 } else {
