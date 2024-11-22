@@ -167,11 +167,26 @@
             elemento.appendChild(div)
             setTimeout(() => {
                 const div2 = document.createElement("div");
+                div3=document.createElement("div")
                 const p2 = document.createElement("p");
+                const p3=document.createElement("p")
+                p3.innerHTML='ótimo! iremos te encaminhar para o nosso setor de cadastro. Obrigado!'
                 div2.setAttribute("class", "mensagem-boot");
+                div3.setAttribute("class", "mensagem-boot");
                 div2.appendChild(p2)
+                div3.appendChild(p3)
                 elemento.appendChild(div2)
-
+                const btn = document.createElement('button')
+                const btn2 = document.createElement('button')
+                btn.classList.add('btn-final')
+                btn2.classList.add('btn-final')
+                btn.innerHTML='encaminhar'
+                btn.addEventListener('click',()=>{
+                    elemento.appendChild(div3)
+                })
+                elemento.appendChild(btn)
+                botaoAtivo=true
+                
                 if (temNoInput) {
                     p2.innerHTML = numeros[valor]
                 } else {
