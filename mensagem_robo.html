@@ -185,8 +185,16 @@
                     btn.classList.add('btn-final')
                     btn2.classList.add('btn-final')
                     btn.innerHTML='encaminhar'
+                    btn2.innerHTML='voltar'
                     btn.addEventListener('click',()=>{
                     elemento.appendChild(div3)
+                    btn2.addEventListener("click,()=>{
+                        setTimeout(() => {
+                        const clone_ = document.querySelector(".msg-pedido").cloneNode(true)
+                        elemento.appendChild(clone_);
+                        x()
+                    }, 1500)
+                    })
                 })
                 elemento.appendChild(btn)
                 elemento.appendChild(btn2)
