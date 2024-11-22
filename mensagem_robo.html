@@ -181,18 +181,10 @@
                 if (temNoInput) {
                     p2.innerHTML = numeros[valor]
                     const btn = document.createElement('button')
-                    const btn2 = document.createElement('button')
                     btn.classList.add('btn-final')
-                    btn2.classList.add('btn-final')
                     btn.innerHTML='encaminhar'
-                    btn2.innerHTML='voltar'
                     btn.addEventListener('click',()=>{
                     elemento.appendChild(div3)
-                    btn2.addEventListener("click",()=>{
-                        const clone_ = document.querySelector(".msg-pedido").cloneNode(true)
-                        elemento.appendChild(clone_);
-                        x()
-                    })
                 })
                 elemento.appendChild(btn)
                 elemento.appendChild(btn2)
