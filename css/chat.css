@@ -12,3 +12,9 @@ img{
     width: 100%;
     object-fit: cover;
 }
+
+.btn-final{
+    width: 50%;
+    padding: 5px;
+    margin-left: 1em;
+}
