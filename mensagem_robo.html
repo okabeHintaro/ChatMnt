@@ -176,19 +176,19 @@
                 div2.appendChild(p2)
                 div3.appendChild(p3)
                 elemento.appendChild(div2)
-                const btn = document.createElement('button')
-                const btn2 = document.createElement('button')
-                btn.classList.add('btn-final')
-                btn2.classList.add('btn-final')
-                btn.innerHTML='encaminhar'
-                btn.addEventListener('click',()=>{
-                    elemento.appendChild(div3)
-                })
-                elemento.appendChild(btn)
                 botaoAtivo=true
                 
                 if (temNoInput) {
                     p2.innerHTML = numeros[valor]
+                    const btn = document.createElement('button')
+                    const btn2 = document.createElement('button')
+                    btn.classList.add('btn-final')
+                    btn2.classList.add('btn-final')
+                    btn.innerHTML='encaminhar'
+                    btn.addEventListener('click',()=>{
+                    elemento.appendChild(div3)
+                })
+                elemento.appendChild(btn)
                 } else {
                     p2.innerHTML = "sinto muito! ainda não temos capacidade  de responder todas as mensagem, digite um numero conforme as questões abaixo ou clique na opção que deseja";
                     setTimeout(() => {
