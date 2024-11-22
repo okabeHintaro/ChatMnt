@@ -144,21 +144,16 @@
         </div>
     </div>
 
-    <script>
-
-        document.getElementById('enviar-msg').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                // Simula o clique no botão
-                console.log('x')
-                document.getElementById('botao').click();
-            }
-        });
-        
+    <script>        
         const numeros = { 1: "em fotografia, nossos consultores trabalham com imagens digitais. Como produto dessa área, eles poderão criar, alterar e animar uma imagem a partir de comandos inciais fornecidos para nossa tecnologias. Deseja conhecer outra área ou podemos de encaminhar para essa área?", 2: "em gastronomia, nossos consultores trabalham receitas digitais. Como produtos dessa área, eles poderão sugerir receitas a partir de uma análise do perfil do cliente através de comando iniciais fornecidos para nossas tecnologias. Deseja conhecer outro área ou podemos te encaminhar para essa área?", 3: "em moda, nossos consultores trabalham com paletas de cores e croquis. Como produto dessa área, elas poderão sugerir uma paleta de cor e um croqui a partir da análise do perfil do cliente através de comando iniciais fornecidos para nossa tecnologia. Deseja conhecer outra área?" }
         const input = document.getElementById("input-msg");
         const elemento = document.getElementById("tela-mensagem");
         var temNoInput = false
         var valor;
+
+        document.getElementById('enviar-msg').addEventListener('keydown', (event)=> {
+         console.log(event)   
+        });
 
         document.getElementById("enviar-msg").addEventListener("click", () => {
             if (input.value in numeros) {
