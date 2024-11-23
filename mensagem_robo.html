@@ -148,18 +148,16 @@
     </div>
 
     <script>        
-       const numeros = {
-    1: "Em fotografia, nossos consultores trabalham com imagens digitais. Como produto dessa área, eles poderão criar, alterar e animar uma imagem a partir de comandos iniciais fornecidos para nossa tecnologia. Deseja conhecer outra área ou podemos te encaminhar para essa área?",
-    2: "Em gastronomia, nossos consultores trabalham com receitas digitais. Como produto dessa área, eles poderão sugerir receitas a partir de uma análise do perfil do cliente através de comandos iniciais fornecidos para nossa tecnologia. Deseja conhecer outra área ou podemos te encaminhar para essa área?",
-    3: "Em moda, nossos consultores trabalham com paletas de cores e croquis. Como produto dessa área, eles poderão sugerir uma paleta de cor e um croqui a partir da análise do perfil do cliente através de comandos iniciais fornecidos para nossa tecnologia. Deseja conhecer outra área?"
-};
+      document.getElementById("enviar-msg").addEventListener("click", handleSendMessage);
 
-const input = document.getElementById("input-msg");
-const elemento = document.getElementById("tela-mensagem");
-let temNoInput = false;
-let valor;
+// Também ativa com a tecla Enter
+input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        handleSendMessage();
+    }
+});
 
-document.getElementById("enviar-msg").addEventListener("click", () => {
+function handleSendMessage() {
     if (input.value in numeros) {
         valor = input.value;
         temNoInput = true;
@@ -195,7 +193,7 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
             btn.innerHTML = "encaminhar";
             btn.addEventListener("click", () => {
                 elemento.appendChild(div3);
-                scrollToBottom(); // Rola para baixo
+                scrollToBottom();
             });
 
             const btn2 = document.createElement("button");
@@ -203,10 +201,10 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
             btn2.innerHTML = "voltar";
             btn2.addEventListener("click", () => {
                 setTimeout(() => {
-                    const clone_pedido = document.querySelector(".clone").cloneNode(true);
+                    const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
                     elemento.appendChild(clone_pedido);
-                    x(); // Ativa interatividade
-                    scrollToBottom(); // Rola para baixo
+                    x();
+                    scrollToBottom();
                 }, 1500);
             });
 
@@ -215,19 +213,19 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
         } else {
             p2.innerHTML = "Sinto muito! Ainda não temos capacidade de responder todas as mensagens. Digite um número conforme as questões abaixo ou clique na opção que deseja.";
             setTimeout(() => {
-                const clone_pedido = document.querySelector(".clone").cloneNode(true);
+                const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
                 elemento.appendChild(clone_pedido);
                 x();
-                scrollToBottom(); // Rola para baixo
+                scrollToBottom();
             }, 1500);
         }
 
         elemento.appendChild(div2);
-        scrollToBottom(); // Rola para baixo após a mensagem do bot
+        scrollToBottom();
     }, 500);
 
     input.value = ""; // Limpa o campo de entrada
-});
+}
 
 function scrollToBottom() {
     setTimeout(() => {
@@ -249,6 +247,7 @@ function x() {
 }
 
 x();
+
     </script>
 </body>
 
