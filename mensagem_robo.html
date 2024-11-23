@@ -156,9 +156,7 @@ const elemento = document.getElementById("tela-mensagem");
 let temNoInput = false;
 let valor;
 
-// Evento para o botão de envio
 document.getElementById("enviar-msg").addEventListener("click", () => {
-    // Verifica se o valor do input está no objeto `numeros`
     if (input.value in numeros) {
         valor = input.value;
         temNoInput = true;
@@ -166,7 +164,6 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
         temNoInput = false;
     }
 
-    // Cria a mensagem do usuário
     const div = document.createElement("div");
     const p = document.createElement("p");
     div.setAttribute("class", "mensagem-usuario");
@@ -175,7 +172,6 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
     elemento.appendChild(div);
 
     setTimeout(() => {
-        // Criação de mensagens de resposta
         const div2 = document.createElement("div");
         const div3 = document.createElement("div");
         const p2 = document.createElement("p");
@@ -191,21 +187,14 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
         if (temNoInput) {
             p2.innerHTML = numeros[valor];
 
-            // Botão de "encaminhar"
             const btn = document.createElement("button");
             btn.classList.add("btn-final");
             btn.innerHTML = "encaminhar";
             btn.addEventListener("click", () => {
                 elemento.appendChild(div3);
-                setTimeout(() => {
-                    elemento.scrollTo({
-                        top: 10000,
-                        behavior: "smooth"
-                    });
-                }, 500);
+                scrollToBottom(); // Rola para baixo
             });
 
-            // Botão de "voltar"
             const btn2 = document.createElement("button");
             btn2.classList.add("btn-final");
             btn2.innerHTML = "voltar";
@@ -213,14 +202,9 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
                 setTimeout(() => {
                     const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
                     elemento.appendChild(clone_pedido);
-                    x(); // Chama a função para habilitar interatividade
-                    setTimeout(() => {
-                    elemento.scrollTo({
-                        top: 10000,
-                        behavior: "smooth"
-                    });
-                }, 500);
-                
+                    x(); // Ativa interatividade
+                    scrollToBottom(); // Rola para baixo
+                }, 1500);
             });
 
             div2.appendChild(btn);
@@ -231,23 +215,26 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
                 const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
                 elemento.appendChild(clone_pedido);
                 x();
+                scrollToBottom(); // Rola para baixo
             }, 1500);
         }
 
         elemento.appendChild(div2);
-        setTimeout(() => {
-            elemento.scrollTo({
-                top: 10000,
-                behavior: "smooth"
-            });
-        }, 500);
+        scrollToBottom(); // Rola para baixo após a mensagem do bot
     }, 500);
 
-    // Limpa o input após o envio
-    input.value = "";
+    input.value = ""; // Limpa o campo de entrada
 });
 
-// Função para ativar interatividade com as opções
+function scrollToBottom() {
+    setTimeout(() => {
+        elemento.scrollTo({
+            top: elemento.scrollHeight,
+            behavior: "smooth"
+        });
+    }, 100); // Aguarda um breve momento para garantir que o conteúdo foi carregado
+}
+
 function x() {
     const opcoes = [...document.querySelectorAll(".opcoes")];
     opcoes.forEach((evt) => {
@@ -258,9 +245,7 @@ function x() {
     });
 }
 
-// Inicializa a interatividade
 x();
-
     </script>
 </body>
 
