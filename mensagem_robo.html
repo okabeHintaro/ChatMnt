@@ -187,6 +187,9 @@
                     const btn = document.createElement('button')
                     btn.classList.add('btn-final')
                     btn.innerHTML='encaminhar'
+                    const btn2 = document.createElement('button')
+                    btn2.classList.add('btn-final')
+                    btn2.innerHTML='encaminhar'
                     btn.addEventListener('click',()=>{
                     elemento.appendChild(div3)
                     setTimeout(() => {
@@ -198,6 +201,7 @@
                 , 300)
                 })
                 div2.appendChild(btn)
+                div2.appendChild(btn2)
                 } else {
                     p2.innerHTML = "sinto muito! ainda não temos capacidade  de responder todas as mensagem, digite um numero conforme as questões abaixo ou clique na opção que deseja";
                     setTimeout(() => {
