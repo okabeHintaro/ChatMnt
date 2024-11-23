@@ -214,6 +214,12 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
                     const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
                     elemento.appendChild(clone_pedido);
                     x(); // Chama a função para habilitar interatividade
+                    setTimeout(() => {
+                    elemento.scrollTo({
+                        top: 10000,
+                        behavior: "smooth"
+                    });
+                }, 500);
                 }, 1500);
             });
 
