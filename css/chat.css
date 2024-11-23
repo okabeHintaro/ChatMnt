@@ -17,3 +17,9 @@ img{
     width: 50%;
     padding: 5px;
 }
+
+@media screen and (min-width:800px) and (max-width:900px){
+    .mensagem-boot{
+        widtht:50%;
+    }
+}
