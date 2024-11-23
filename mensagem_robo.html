@@ -183,25 +183,31 @@
                 botaoAtivo=true
                 
                 if (temNoInput) {
-                    p2.innerHTML = numeros[valor]
-                    const btn = document.createElement('button')
-                    btn.classList.add('btn-final')
-                    btn.innerHTML='encaminhar'
-                    const btn2 = document.createElement('button')
-                    btn2.classList.add('btn-final')
-                    btn2.innerHTML='voltar'
-                    btn.addEventListener('click',()=>{
-                    elemento.appendChild(div3)
-                    setTimeout(IrParaBaixo,500)
-                    function IrParaBaixo(){
-                    elemento.scrollTo({
-                    top: 10000,
-                    behavior: 'smooth' // Para uma rolagem suave
-                    })
-                    }
-                div2.appendChild(btn)
-                div2.appendChild(btn2)
-                } else {
+    p2.innerHTML = numeros[valor];
+
+    const btn = document.createElement('button');
+    btn.classList.add('btn-final');
+    btn.innerHTML = 'encaminhar';
+
+    const btn2 = document.createElement('button');
+    btn2.classList.add('btn-final');
+    btn2.innerHTML = 'voltar';
+
+    btn.addEventListener('click', () => {
+        elemento.appendChild(div3);
+
+        setTimeout(() => {
+            elemento.scrollTo({
+                top: 10000,
+                behavior: 'smooth' // Para uma rolagem suave
+            });
+        }, 500);
+    });
+
+    div2.appendChild(btn);
+    div2.appendChild(btn2);
+}
+ else {
                     p2.innerHTML = "sinto muito! ainda não temos capacidade  de responder todas as mensagem, digite um numero conforme as questões abaixo ou clique na opção que deseja";
                     setTimeout(() => {
                         const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true)
