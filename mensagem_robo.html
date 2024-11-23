@@ -203,7 +203,7 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
             btn2.innerHTML = "voltar";
             btn2.addEventListener("click", () => {
                 setTimeout(() => {
-                    const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
+                    const clone_pedido = document.querySelector(".clone").cloneNode(true);
                     elemento.appendChild(clone_pedido);
                     x(); // Ativa interatividade
                     scrollToBottom(); // Rola para baixo
@@ -215,7 +215,7 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
         } else {
             p2.innerHTML = "Sinto muito! Ainda não temos capacidade de responder todas as mensagens. Digite um número conforme as questões abaixo ou clique na opção que deseja.";
             setTimeout(() => {
-                const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
+                const clone_pedido = document.querySelector(".clone").cloneNode(true);
                 elemento.appendChild(clone_pedido);
                 x();
                 scrollToBottom(); // Rola para baixo
