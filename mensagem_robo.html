@@ -145,101 +145,116 @@
     </div>
 
     <script>        
-        const numeros = { 1: "Em fotografia, nossos consultores trabalham com imagens digitais. Como produto dessa área, eles poderão criar, alterar e animar uma imagem a partir de comandos inciais fornecidos para nossa tecnologias. Deseja conhecer outra área ou podemos de encaminhar para essa área?", 2: "Em gastronomia, nossos consultores trabalham receitas digitais. Como produtos dessa área, eles poderão sugerir receitas a partir de uma análise do perfil do cliente através de comando iniciais fornecidos para nossas tecnologias. Deseja conhecer outro área ou podemos te encaminhar para essa área?", 3: "Em moda, nossos consultores trabalham com paletas de cores e croquis. Como produto dessa área, elas poderão sugerir uma paleta de cor e um croqui a partir da análise do perfil do cliente através de comando iniciais fornecidos para nossa tecnologia. Deseja conhecer outra área?" }
-        const input = document.getElementById("input-msg");
-        const elemento = document.getElementById("tela-mensagem");
-        var temNoInput = false
-        var valor;
+       const numeros = {
+    1: "Em fotografia, nossos consultores trabalham com imagens digitais. Como produto dessa área, eles poderão criar, alterar e animar uma imagem a partir de comandos iniciais fornecidos para nossa tecnologia. Deseja conhecer outra área ou podemos te encaminhar para essa área?",
+    2: "Em gastronomia, nossos consultores trabalham com receitas digitais. Como produto dessa área, eles poderão sugerir receitas a partir de uma análise do perfil do cliente através de comandos iniciais fornecidos para nossa tecnologia. Deseja conhecer outra área ou podemos te encaminhar para essa área?",
+    3: "Em moda, nossos consultores trabalham com paletas de cores e croquis. Como produto dessa área, eles poderão sugerir uma paleta de cor e um croqui a partir da análise do perfil do cliente através de comandos iniciais fornecidos para nossa tecnologia. Deseja conhecer outra área?"
+};
 
-        document.getElementById('enviar-msg').addEventListener('keydown', (event)=> {
-         console.log(event)   
-        });
+const input = document.getElementById("input-msg");
+const elemento = document.getElementById("tela-mensagem");
+let temNoInput = false;
+let valor;
 
-        document.getElementById("enviar-msg").addEventListener("click", () => {
-            if (input.value in numeros) {
-                valor = input.value;
-                temNoInput = true;
-            } else {
-                temNoInput = false;
-            };
+// Evento para o botão de envio
+document.getElementById("enviar-msg").addEventListener("click", () => {
+    // Verifica se o valor do input está no objeto `numeros`
+    if (input.value in numeros) {
+        valor = input.value;
+        temNoInput = true;
+    } else {
+        temNoInput = false;
+    }
 
-            const div = document.createElement("div");
-            const p = document.createElement("p");
-            div.setAttribute("class", "mensagem-usuario");
-            p.innerHTML = input.value;
-            div.appendChild(p);
-            elemento.appendChild(div)
+    // Cria a mensagem do usuário
+    const div = document.createElement("div");
+    const p = document.createElement("p");
+    div.setAttribute("class", "mensagem-usuario");
+    p.innerHTML = input.value;
+    div.appendChild(p);
+    elemento.appendChild(div);
+
+    setTimeout(() => {
+        // Criação de mensagens de resposta
+        const div2 = document.createElement("div");
+        const div3 = document.createElement("div");
+        const p2 = document.createElement("p");
+        const p3 = document.createElement("p");
+
+        div2.setAttribute("class", "mensagem-boot");
+        div3.setAttribute("class", "mensagem-boot");
+
+        p3.innerHTML = 'Ótimo! Iremos te encaminhar para o nosso setor de cadastro. Obrigado!';
+        div3.appendChild(p3);
+        div2.appendChild(p2);
+
+        if (temNoInput) {
+            p2.innerHTML = numeros[valor];
+
+            // Botão de "encaminhar"
+            const btn = document.createElement("button");
+            btn.classList.add("btn-final");
+            btn.innerHTML = "encaminhar";
+            btn.addEventListener("click", () => {
+                elemento.appendChild(div3);
+                setTimeout(() => {
+                    elemento.scrollTo({
+                        top: 10000,
+                        behavior: "smooth"
+                    });
+                }, 500);
+            });
+
+            // Botão de "voltar"
+            const btn2 = document.createElement("button");
+            btn2.classList.add("btn-final");
+            btn2.innerHTML = "voltar";
+            btn2.addEventListener("click", () => {
+                setTimeout(() => {
+                    const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
+                    elemento.appendChild(clone_pedido);
+                    x(); // Chama a função para habilitar interatividade
+                }, 1500);
+            });
+
+            div2.appendChild(btn);
+            div2.appendChild(btn2);
+        } else {
+            p2.innerHTML = "Sinto muito! Ainda não temos capacidade de responder todas as mensagens. Digite um número conforme as questões abaixo ou clique na opção que deseja.";
             setTimeout(() => {
-                const div2 = document.createElement("div");
-                const div3=document.createElement("div")
-                const p2 = document.createElement("p");
-                const p3=document.createElement("p")
-                p3.innerHTML='ótimo! iremos te encaminhar para o nosso setor de cadastro. Obrigado!'
-                div2.setAttribute("class", "mensagem-boot");
-                div3.setAttribute("class", "mensagem-boot");
-                div2.appendChild(p2)
-                div3.appendChild(p3)
-                elemento.appendChild(div2)
-                botaoAtivo=true
-                
-                if (temNoInput) {
-    p2.innerHTML = numeros[valor];
+                const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
+                elemento.appendChild(clone_pedido);
+                x();
+            }, 1500);
+        }
 
-    const btn = document.createElement('button');
-    btn.classList.add('btn-final');
-    btn.innerHTML = 'encaminhar';
-
-    const btn2 = document.createElement('button');
-    btn2.classList.add('btn-final');
-    btn2.innerHTML = 'voltar';
-
-    
-                    
-    btn.addEventListener('click', () => {
-        elemento.appendChild(div3);
+        elemento.appendChild(div2);
         setTimeout(() => {
             elemento.scrollTo({
                 top: 10000,
-                behavior: 'smooth' // Para uma rolagem suave
+                behavior: "smooth"
             });
         }, 500);
-    div2.appendChild(btn);
-    div2.appendChild(btn2);
+    }, 500);
+
+    // Limpa o input após o envio
+    input.value = "";
+});
+
+// Função para ativar interatividade com as opções
+function x() {
+    const opcoes = [...document.querySelectorAll(".opcoes")];
+    opcoes.forEach((evt) => {
+        evt.addEventListener("click", () => {
+            input.value = Number(evt.getAttribute("data-")); // Supondo que o data-value tenha o número desejado
+            document.getElementById("enviar-msg").click(); // Simula o clique no botão de enviar
+        });
+    });
 }
- else {
-                    p2.innerHTML = "sinto muito! ainda não temos capacidade  de responder todas as mensagem, digite um numero conforme as questões abaixo ou clique na opção que deseja";
-                    setTimeout(() => {
-                        const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true)
-                        elemento.appendChild(clone_pedido);
-                        x()
-                    }, 1500)
-                }
-            }, 500)
 
+// Inicializa a interatividade
+x();
 
-
-            setTimeout(() => {
-                elemento.scrollTo({
-                    top: 10000,
-                    behavior: 'smooth' // Para uma rolagem suave
-                })
-            }
-                , 500)
-
-            input.value = "";
-        })
-
-        function x() {
-            const opcoes = [...document.querySelectorAll(".opcoes")]
-            opcoes.forEach((evt) => {
-                evt.addEventListener("click", () => {
-                    input.value = Number(evt.getAttribute("data-")); // Supondo que o data-value tenha o número desejado
-                    document.getElementById("enviar-msg").click(); // Simula o clique no botão de enviar
-                })
-            })
-        }
-
-        x();
     </script>
 </body>
 
