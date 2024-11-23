@@ -194,7 +194,13 @@
     btn2.innerHTML = 'voltar';
 
     btn2.addEventListener('click',()=>{
-        console.log('x')
+         setTimeout(() => {
+                        const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true)
+                        elemento.appendChild(clone_pedido);
+                        x()
+                    }, 1500)
+                }
+            }, 500)
     })
                     
     btn.addEventListener('click', () => {
