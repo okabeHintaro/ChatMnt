@@ -132,7 +132,7 @@
             <div class="mensagem-boot msg-pedido">
                 <p>Boa tarde! eu sou o Mobi da consultoria MNT estou aqui para fornecer algumas orientações iniciais sobre nossas áreas e produtos.</p>
             </div>
-            <div class="mensagem-boot msg-pedido">
+            <div class="mensagem-boot msg-pedido clone">
                 <p>Para começar, escolha uma área que deseja conhecer.</p>
                 <p class="opcoes" data-="1">1 Fotografia</p>
                 <p class="opcoes" data-="2">2 Gastronomia </p>
@@ -203,7 +203,7 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
             btn2.innerHTML = "voltar";
             btn2.addEventListener("click", () => {
                 setTimeout(() => {
-                    const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
+                    const clone_pedido = document.querySelector(".clone").cloneNode(true);
                     elemento.appendChild(clone_pedido);
                     x(); // Ativa interatividade
                     scrollToBottom(); // Rola para baixo
@@ -215,7 +215,7 @@ document.getElementById("enviar-msg").addEventListener("click", () => {
         } else {
             p2.innerHTML = "Sinto muito! Ainda não temos capacidade de responder todas as mensagens. Digite um número conforme as questões abaixo ou clique na opção que deseja.";
             setTimeout(() => {
-                const clone_pedido = document.querySelector(".msg-pedido").cloneNode(true);
+                const clone_pedido = document.querySelector(".clone").cloneNode(true);
                 elemento.appendChild(clone_pedido);
                 x();
                 scrollToBottom(); // Rola para baixo
