@@ -192,14 +192,13 @@
                     btn2.innerHTML='voltar'
                     btn.addEventListener('click',()=>{
                     elemento.appendChild(div3)
-                    setTimeout(() => {
-                elemento.scrollTo({
+                    setTimeout(IrParaBaixo,500)
+                    function IrParaBaixo(){
+                    elemento.scrollTo({
                     top: 10000,
                     behavior: 'smooth' // Para uma rolagem suave
-                })
-            }
-                , 300)
-                })
+                    }
+                    }
                 div2.appendChild(btn)
                 div2.appendChild(btn2)
                 } else {
