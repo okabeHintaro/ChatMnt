@@ -193,9 +193,12 @@
     btn2.classList.add('btn-final');
     btn2.innerHTML = 'voltar';
 
+    btn2.addEventListener('click',()=>{
+        console.log('x')
+    })
+                    
     btn.addEventListener('click', () => {
         elemento.appendChild(div3);
-
         setTimeout(() => {
             elemento.scrollTo({
                 top: 10000,
