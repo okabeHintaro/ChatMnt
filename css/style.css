@@ -116,6 +116,21 @@ h6,
     max-height: 45px;
 }
 
+@media screen and (max-width:768px) {
+    .hero-header {
+        background:
+            
+            url(../img/bg-round.png),
+            url(../img/bg-tree.png);
+        background-position:
+            
+            left 55% top -1px,
+            left 45% bottom -1px,
+            center bottom -1px;
+        background-repeat: no-repeat;
+    }
+}
+
 @media (max-width: 991.98px) {
     .sticky-top.navbar-light {
         position: relative;
@@ -191,7 +206,21 @@ h6,
 
 
 /*** Hero Header ***/
-
+@media screen and (min-width:900px) {
+    .hero-header {
+        background:
+            url(../img/bg-dot.png),
+            url(../img/bg-dot.png),  
+            url(../img/bg-tree.png);
+        background-position:
+            10px 10px,
+            bottom 190px right 10px,   
+            left 45% bottom -1px,
+            center bottom -1px;
+        background-repeat: no-repeat;
+    }
+    
+}
 /*** Section Title ***/
 .section-title::before {
     position: absolute;
